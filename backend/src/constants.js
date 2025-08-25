@@ -1,0 +1,1 @@
+export const DB_NAME = "trust_management_system"
