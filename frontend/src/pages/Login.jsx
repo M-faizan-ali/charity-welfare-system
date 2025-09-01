@@ -1,7 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import api from "../api/Api.js"; // adjust path if needed
+import axios from "axios";
 
 const Login = () => {
   const {
@@ -12,17 +11,19 @@ const Login = () => {
 
   const [message, setMessage] = useState("");
 
-  // submit handler
+  // Submit handler
   const onSubmit = async (data) => {
+    console.log("data is: ", data)
     try {
-      const res = await api.post("/users/login", data);
-      setMessage("Login successful ✅");
+      const res = await axios.post(
+        "http://localhost:8000/api/v1/users/login",
+        data,
+        { headers: { "Content-Type": "application/json" } }
+      );
       console.log(res.data);
-      // if backend returns a token:
-      // localStorage.setItem("token", res.data.token);
+      setMessage("Login successful ✅");
     } catch (err) {
       setMessage(err.response?.data?.message || "Login failed ❌");
-      console.error(err);
     }
   };
 
@@ -45,7 +46,7 @@ const Login = () => {
                 Sign in to your account
               </h1>
 
-              {/* Fullname */}
+              {/* Email */}
               <div>
                 <label
                   htmlFor="email"
@@ -54,17 +55,17 @@ const Login = () => {
                   Enter Your Email
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   id="email"
-                  placeholder="Your Name"
+                  placeholder="you@example.com"
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600"
                   {...register("email", {
-                    required: "Fullname is required",
+                    required: "Email is required",
                   })}
                 />
-                {errors.fullname && (
+                {errors.email && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.fullname.message}
+                    {errors.email.message}
                   </p>
                 )}
               </div>
@@ -84,7 +85,7 @@ const Login = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600"
                   {...register("password", {
                     required: "Password is required",
-                    minLength: { value: 6, message: "Min length is 6" },
+                    minLength: { value: 4, message: "Min length is 4" },
                   })}
                 />
                 {errors.password && (
