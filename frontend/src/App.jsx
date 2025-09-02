@@ -5,6 +5,7 @@ import Donations from "./component/donations/Donations"
 import Expenses from "./component/expenses/Expenses"
 import Reports from "./component/reports/Reports"
 import Donors from "./component/donors/donors"
+import DonorForm from "./component/donors/DonorForm"
 
 
 
@@ -31,5 +32,6 @@ export default function App() {
         </main>
       </div>
     </BrowserRouter>
+    // <DonorForm/>
   )
 }

@@ -20,12 +20,12 @@ const userSchema = new Schema(
     },
     address: {
       type: String,
-    //   required: true,
+      required: true,
       trim: true,
     },
     avatar: {
       type: String, //cloudinary url
-    //   required: true,
+      required: true,
     },
     password: {
       type: String,
@@ -34,7 +34,7 @@ const userSchema = new Schema(
     userType: {
     type: String,
     enum: ["admin", "manager", "staff"],
-    // required: true
+    required: true
     },
     refreshToken: {
       type: String,
