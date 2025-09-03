@@ -11,27 +11,27 @@ import DonorForm from "./component/donors/DonorForm"
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div className="flex">
-        {/* Fixed sidebar */}
-        <SideBar />
+    // <BrowserRouter>
+    //   <div className="flex">
+    //     {/* Fixed sidebar */}
+    //     <SideBar />
 
-        {/* Main content area (push right of the fixed sidebar on ≥sm screens) */}
-        <main className="w-full p-4 sm:ml-64">
-          <Routes>
-            {/* Redirect root to /dashboard */}
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
-            <Route path="/dashboard" element={<AdminDashboard />} />
-            <Route path="/donations" element={<Donations />} />
-            <Route path="/expenses" element={<Expenses />} />
-            <Route path="/donors" element={<Donors />} />
-            <Route path="/reports" element={<Reports />} />
-            {/* 404 (optional) */}
-            <Route path="*" element={<div className="p-6">Page not found</div>} />
-          </Routes>
-        </main>
-      </div>
-    </BrowserRouter>
-    // <DonorForm/>
+    //     {/* Main content area (push right of the fixed sidebar on ≥sm screens) */}
+    //     <main className="w-full p-4 sm:ml-64">
+    //       <Routes>
+    //         {/* Redirect root to /dashboard */}
+    //         <Route path="/" element={<Navigate to="/dashboard" replace />} />
+    //         <Route path="/dashboard" element={<AdminDashboard />} />
+    //         <Route path="/donations" element={<Donations />} />
+    //         <Route path="/expenses" element={<Expenses />} />
+    //         <Route path="/donors" element={<Donors />} />
+    //         <Route path="/reports" element={<Reports />} />
+    //         {/* 404 (optional) */}
+    //         <Route path="*" element={<div className="p-6">Page not found</div>} />
+    //       </Routes>
+    //     </main>
+    //   </div>
+    // </BrowserRouter>
+    <DonorForm/>
   )
 }
